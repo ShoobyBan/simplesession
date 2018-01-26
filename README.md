@@ -18,13 +18,26 @@ Set sets a value into the store and saves session
 
 Usage:
 ```go
-  package main
-  import "github.com/shoobyban/simplesession"
-  func main () {
-  	var sess simplesession.SimpleSession
-	sess.Load("sessionstore.data")
-  	sess["test"] = "something"
-  	sess.Save()
-  }
+// Simple counter program using session storage
+package main
+import (
+    "github.com/shoobyban/simplesession"
+    "fmt"
+)
+func main () {
+    sess, err := simplesession.Load("sessionstore.data")
+    if err == nil {
+        z:= (*sess)["test"]
+        if z != nil {
+            fmt.Println(z.(int))
+            sess.Set("test",z.(int)+1)
+        } else {
+            fmt.Println("Setting to 1, first run")
+            sess.Set("test",1)
+        }
+    } else {
+        fmt.Println(err)
+    }
+}
 ```
 
