@@ -18,7 +18,7 @@ Set sets a value into the store and saves session
 
 Usage:
 ```
-  var sess limsession.LIMSession
+  var sess limsession.SimpleSession
 	sess.Load("sessionstore.data")
   sess["test"] = "something"
   sess.Save()
