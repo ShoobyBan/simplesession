@@ -19,7 +19,7 @@ Set sets a value into the store and saves session
 Usage:
 ```go
   package main
-  import "github.com/ShoobyBan/simplesession"
+  import "github.com/shoobyban/simplesession"
   func main () {
   	var sess simplesession.SimpleSession
 	sess.Load("sessionstore.data")
