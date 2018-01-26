@@ -18,9 +18,13 @@ Set sets a value into the store and saves session
 
 Usage:
 ```
-  var sess limsession.SimpleSession
+  package main
+  import "github.com/ShoobyBan/simplesession"
+  func main () {
+  	var sess simplesession.SimpleSession
 	sess.Load("sessionstore.data")
-  sess["test"] = "something"
-  sess.Save()
+  	sess["test"] = "something"
+  	sess.Save()
+  }
 ```
 
