@@ -3,17 +3,17 @@
 Really Simple Session management in Go, bob into file
 
 ```
-func (SimpleSession) Load
-func (s SimpleSession) Load(storageFilePath string) (SimpleSession, error)
-Load loads decodes session from Gob file, saving will update the file
+SimpleSession type, for session save/load
+var StorageFilePath string
+type SimpleSession map[string]interface{}
+func Load(storageFilePath string) (*SimpleSession, error)
+    Load loads decodes session from Gob file, saving will update the file
 
-func (SimpleSession) Save
-func (s SimpleSession) Save() error
-Save encodes and saves session via Gob to file
+func (s *SimpleSession) Save() error
+    Save encodes and saves session via Gob to file
 
-func (SimpleSession) Set
-func (s SimpleSession) Set(key string, val interface{})
-Set sets a value into the store and saves session
+func (s *SimpleSession) Set(key string, val interface{})
+    Set sets a value into the store and saves session
 ```
 
 Usage:
