@@ -3,12 +3,15 @@ package simplesession
 import (
 	"encoding/gob"
 	"os"
+	"sync"
 )
 
 // SimpleSession type, for session save/load
 var StorageFilePath string
 
 type SimpleSession map[string]interface{}
+
+var lock sync.Mutex
 
 // Save encodes and saves session via Gob to file
 func (s *SimpleSession) Save() error {
@@ -40,6 +43,8 @@ func Load(storageFilePath string) (*SimpleSession, error) {
 
 // Set sets a value into the store and saves session
 func (s *SimpleSession) Set(key string, val interface{}) {
+	lock.Lock()
+	defer lock.Unlock()
 	(*s)[key] = val
 	s.Save()
 }
