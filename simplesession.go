@@ -48,3 +48,8 @@ func (s *SimpleSession) Set(key string, val interface{}) {
 	(*s)[key] = val
 	s.Save()
 }
+
+// Get gets the value by key from the session store
+func (s *SimpleSession) Get(key string) interface{} {
+	return (*s)[key]
+}
